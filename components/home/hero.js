@@ -20,10 +20,27 @@ export default function Hero({ locale, CTALocale }) {
 			setDuration(0.3);
 		};
 
-		window.addEventListener('scroll', handleScroll);
+		const handleResize = () => {
+			if (typeof window !== 'undefined') {
+				if (window.innerWidth < 768) {
+					setTilt(0); // 移动设备上不倾斜
+				} else {
+					handleScroll(); // 桌面设备上保持原有效果
+				}
+			}
+		};
+
+		if (typeof window !== 'undefined') {
+			window.addEventListener('scroll', handleScroll);
+			window.addEventListener('resize', handleResize);
+			handleResize(); // 初始化时调用一次
+		}
 
 		return () => {
-			window.removeEventListener('scroll', handleScroll);
+			if (typeof window !== 'undefined') {
+				window.removeEventListener('scroll', handleScroll);
+				window.removeEventListener('resize', handleResize);
+			}
 		};
 	}, []);
 
@@ -89,13 +106,13 @@ export default function Hero({ locale, CTALocale }) {
 						delay: duration == 0.8 ? 0.4 : 0,
 						duration: duration,
 					}}
-					className='w-full'
+					className='w-full md:w-10/12 mx-auto'
 				>
 					<Image
 						width={1024}
 						height={600}
 						src={'/og.png'}
-						className='hidden md:flex w-full -mt-10'
+						className='w-full -mt-10'
 						alt='app demo'
 					/>
 				</motion.div>
