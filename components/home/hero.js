@@ -106,13 +106,13 @@ export default function Hero({ locale, CTALocale }) {
 						delay: duration == 0.8 ? 0.4 : 0,
 						duration: duration,
 					}}
-					className='w-full md:w-10/12 mx-auto'
+					className='w-full md:w-10/12 mx-auto mt-10'
 				>
 					<Image
 						width={1024}
 						height={600}
 						src={'/og.png'}
-						className='w-full -mt-10'
+						className='w-full'
 						alt='app demo'
 					/>
 				</motion.div>
