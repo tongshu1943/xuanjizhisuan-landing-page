@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import HeroIcons from './icons';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -50,9 +51,16 @@ export default function Hero({ locale, CTALocale }) {
 						duration: 1,
 					}}
 				>
-					<h2 className='w-full md:w-10/12 mx-auto text-xl md:text-2xl text-base-content/80 md:text-center mb-5 md:mb-10'>{locale.h2}</h2>
+					<h2 className='w-full md:w-10/12 mx-auto text-xl md:text-2xl text-base-content/80 md:text-center mb-5 md:mb-10'>
+						{locale.h2.split('\n').map((paragraph, index) => (
+							<React.Fragment key={index}>
+								{paragraph}
+								{index < locale.h2.split('\n').length - 1 && <br />}
+							</React.Fragment>
+						))}
+					</h2>
 
-					<div className='w-full md:w-8/12 mx-auto flex flex-col md:flex-row md:items-center justify-between gap-y-5'>
+					{/* <div className='w-full md:w-8/12 mx-auto flex flex-col md:flex-row md:items-center justify-between gap-y-5'>
 						<HeroIcons />
 
 						<div className='flex flex-col md:flex-row gap-2'>
@@ -72,7 +80,7 @@ export default function Hero({ locale, CTALocale }) {
 								<IoDocumentText /> {CTALocale.btn2}
 							</a>
 						</div>
-					</div>
+					</div> */}
 				</motion.div>
 				<motion.div
 					initial={{ opacity: 0, y: 100, rotateX: '0deg' }}

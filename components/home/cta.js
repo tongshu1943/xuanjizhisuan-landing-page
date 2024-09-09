@@ -22,18 +22,29 @@ export default function Cta({ locale, CTALocale }) {
 
 					<h3 className='w-full md:w-10/12 mx-auto text-xl md:text-2xl text-base-content/80 md:text-center'>{locale.h3}</h3>
 
-					<a
+					{/* <a
 						title='get source code'
 						className='mt-10 btn btn-sm md:btn-md btn-base border-none hover:ring-1 ring-base-content text-base-100 hover:text-base-content bg-base-content hover:bg-base-100 rounded-full'
 						href='#'
 					>
 						<SiGithub /> {CTALocale.btn1}
-					</a>
+					</a> */}
 				</div>
 			</motion.div>
 
 			<div className='hidden md:block absolute left-[30%] top-0 z-0'>
 				<div className='absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]'></div>
+			</div>
+
+			<div className='w-full md:w-8/12 mx-auto flex justify-center mt-8'>
+				<div className='flex flex-col items-center'>
+					<img 
+						src="/wechat-qr.jpg" 
+						alt="WeChat QR Code" 
+						className="w-48 h-48 mb-4" 
+					/>
+					<p className="text-center">{CTALocale.qrcode}</p>
+				</div>
 			</div>
 		</section>
 	);
